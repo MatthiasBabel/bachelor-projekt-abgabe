@@ -1,0 +1,108 @@
+mat-progress-bar{
+  height: 100px;
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.mat-progress-bar-fill::after{
+  background-color: #098e0d;
+}
+img{
+  position: absolute;
+  width:500px;
+  top: -200px;
+}
+.col-md-6{
+
+}
+.row{
+  min-width: 100%;
+}
+.container{
+  position: fixed;
+  left: 0px;
+  padding: 3%;
+  z-index: 999;
+  width: 100%;
+  top: 64px;
+  max-width: 100%;
+  max-height: calc(100% - 64px);
+  height:  calc(100% - 64px);
+}
+mat-card{
+  width: 100%;
+  margin: 20px;
+  margin-right: 20px;
+
+}
+
+mwl-gauge {
+  width: 150px;
+  height: 150px;
+  display: block;
+  padding: 10px;
+}
+mwl-gauge > .gauge > .dial {
+  stroke: #eee;
+  stroke-width: 2;
+  fill: rgba(0,0,0,0);
+}
+mwl-gauge > .gauge > .value {
+  stroke: rgb(47, 227, 255);
+  stroke-width: 2;
+  fill: rgba(0,0,0,0);
+}
+mwl-gauge > .gauge > .value-text {
+  fill: rgb(47, 227, 255);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+}
+ngx-gauge{
+  display: table;
+  margin: 0 auto;
+}
+mat-slider{
+  width: 100%;
+}
+h1{
+  font-size: 300%;
+  color: #098e0d;
+}
+.balance{
+  font-size: 250%;
+  font-weight: bold;
+  color: #7c7c7c;
+}
+button{
+  margin: 20px;
+}
+input{
+  font-size: 100%;
+}
+mat-form-field{
+  margin-right: 20px;
+}
+.time{
+  font-size: 200%;
+  font-weight: bold;
+  color: #7c7c7c;
+}
+.right-input{
+  position: absolute;
+  right: 110px;
+  bottom: 110px;
+}
+.right-button{
+  position: absolute;
+  right: 10px;
+  bottom: 110px;
+}
+.clock{
+  position: absolute;
+  right: 16px;
+  font-size: 200%;
+  font-weight: bold;
+  color: #7c7c7c;
+}

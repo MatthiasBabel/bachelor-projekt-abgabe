@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Authoritätsübersicht</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="balance"> Qualitätsvergabe </h2>
+      <mat-form-field>
+        <input matInput placeholder="Adresse" [(ngModel)]="addressProducer">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Qualität" [(ngModel)]="lightProducer">
+          <mat-option ngDefaultControl *ngFor="let light of lights" [(value)]="light.value">
+            {{light.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button [disabled]="!(true)" (click)="approve()">bestätigen</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="balance"> Authoritätsbestimmung </h2>
+      <mat-form-field>
+        <input matInput placeholder="Adresse" [(ngModel)]="addressAuthority">
+      </mat-form-field>
+      <button mat-raised-button [disabled]="!(true)" (click)="approveAuthority()">bestätigen</button>
+    </div>
+  </div>
+</div>

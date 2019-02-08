@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$fim-style-primary: mat-palette($mat-green, 600);
+$fim-style-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+
+$fim-style-warn:    mat-palette($mat-red);
+
+
+$fim-style-theme: mat-light-theme($fim-style-primary, $fim-style-accent, $fim-style-warn);
+
+
+
+@include angular-material-theme($fim-style-theme);

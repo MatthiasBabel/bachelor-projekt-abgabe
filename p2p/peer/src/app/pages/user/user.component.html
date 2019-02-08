@@ -1,0 +1,119 @@
+<div class="container">
+  <h1>Tradingübersicht</h1>
+  <h2 class="right">{{time}} </h2>
+  <h2>Ihre Blockchain-Adresse: {{acc}}</h2>
+  <h2 class="balance">Ether in Wei: {{etherBalance}} </h2>
+
+  <div class="row first">
+    <div class="list col-md-6">
+      <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell (click)="activeAuction = element" *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="bid">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Gebot </th>
+            <td mat-cell (click)="activeAuction = element" *matCellDef="let element"> {{element.bid}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="light">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ampel </th>
+            <td mat-cell (click)="activeAuction = element" *matCellDef="let element"> {{element.light}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+            <td mat-cell (click)="activeAuction = element" *matCellDef="let element"> {{element.address}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="owner">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Eigentümer </th>
+            <td mat-cell (click)="activeAuction = element" *matCellDef="let element"> {{element.owner}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6 list">
+      <div class="row klein">
+        <mat-card class="example-container">
+          <div class="row">
+            <div class="col-md-6">
+              <p> Aktuelles Intervall: </p>
+              <p class="interval"> {{currentIntervalHuman}} - {{endCurrentIntervalHuman}} </p>
+              <p> verfügbare Stromeinheiten </p>
+              <p class="interval"> {{currentUnits}} </p>
+            </div>
+              <div class="col-md-6">
+                <p> Nächstes Intervall:</p>
+                <p class="interval"> {{nextIntervalHuman}} - {{endNextIntervalHuman}} </p>
+                <p> verfügbare Stromeinheiten </p>
+                <p class="interval"> {{nextUnits}} </p>
+              </div>
+          </div>
+        </mat-card>
+      </div>
+      <div class="row klein">
+      <mat-card *ngIf="activeAuction != undefined" class="example-container">
+          <h2 class="auction">Auktion: {{activeAuction.address}} </h2>
+          <p>Aktuell höchstes Gebot: {{activeAuction.bid}} </p>
+          <p>Eigentümer der Auktion: {{activeAuction.owner}} </p>
+          <p> Intervall, in welchem der Strom geliefert wird: {{nextIntervalHuman}} - {{endNextIntervalHuman}} </p>
+          <mat-form-field>
+            <input matInput placeholder="Gebot" [(ngModel)]="bidToSet">
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!(bidToSet <= tokenBalance && activeAuction.bid < bidToSet && activeAuction.owner != acc)" (click)="setNewBid()">setzen</button>
+          <img *ngIf="activeAuction.light == 0"src="assets/ampelAus.png">
+          <img *ngIf="activeAuction.light == 1"src="assets/ampelRot.png">
+          <img *ngIf="activeAuction.light == 2"src="assets/ampelOrange.png">
+          <img *ngIf="activeAuction.light == 3"src="assets/ampelGruen.png">
+      </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+    <mat-card class="full">
+      <h2 class="balance">Token: {{tokenBalance}} </h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h2> An Konto überweisen </h2>
+          <mat-form-field>
+            <input matInput placeholder="Adresse" [(ngModel)]="to">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Anzahl an Token" [(ngModel)]="amount">
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!(tokenBalance >= amount && (to != undefined))" (click)="transfer()">überweisen</button>
+        </div>
+        <div class="col-md-6">
+          <h2>Token erwerben</h2>
+          <mat-form-field>
+            <input matInput placeholder="Anzahl an Wei" [(ngModel)]="amountOfWei">
+          </mat-form-field>
+          <button mat-raised-button [disabled]="!(etherBalance >= amountOfWei && amountOfWei >= tokenInWei)" (click)="getToken()">tauschen</button>
+          <p> Wechselkurs: {{tokenInWei}}:1 </p>
+          <p> Wert In Token: {{amountOfWei/tokenInWei}} </p>
+        </div>
+      </div>
+    </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card class="full">
+          <h2 class= "balance"> Eigene Auktion </h2>
+          <h2> im Intervall </h2>
+          <h2 class="interval">  {{nextIntervalHuman}} - {{endNextIntervalHuman}} </h2>
+          <button mat-raised-button [disabled]="!(true)" (click)="startAuction()">starten</button>
+        </mat-card>
+    </div>
+  </div>
+</div>

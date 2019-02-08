@@ -1,6 +1,6 @@
-#Bachelor-Projekt
+# Bachelor-Projekt
 
-##Frontend
+## Frontend
 Das Frontend ist, wie mit dem Betreuer besprochen, nicht für die Abgabe, sondern allein für die Veranschaulichung des Codes in der Abschlusspräsentation gedacht. Wodurch die Implementierung dessen sich auf eine sehr rohe und nicht für den Endbenutzer taugliche Fassung beschränkt.
 
 Um das Frontend der jeweiligen Use Cases starten zu können müssen folgende Schritte ausgeführt werden.
@@ -22,5 +22,5 @@ Nun kann das Frontend über Internetbrowser erreicht werden.
 Um die Sicht eines Benutzers zu öffenen muss folgender Link aufgerufen werden ```localhost:4200/pages/user/1```hierbei ist es möglich verschiedene Benutzer zu wählen, indem man die letzte Zahl durch eine nächst höhere ersetzt.
 Um die Sicht des Netzbetreibers oder einer Autorität zu öffenen muss der Linke ```localhost:4200/pages/betreiber``` geöffnet werden.
 
-#Smart Contracts
-Um die Funktionalität der Smart Contracts (siehe ./p2p/Contracts.sol oder ./battery/Contracts.sol) testen zu können können diese einfach auf der Remix IDE von Ethereum ausgeführt werden. Hierfür muss der Haken für Optimization beim Compilieren gesetzt werden. Der zu deployende Smart Contract ist entweder VirtualBattery oder Energy. Alle weiteren Abhängigkeiten sind aus der beigefügten Arbeit ersichtlich und würden den Rahmen dieser README sprengen.
+# Smart Contracts
+Um die Funktionalität der Smart Contracts (siehe ./p2p/Contracts.sol oder ./battery/Contracts.sol) testen zu können können diese einfach auf der Remix IDE von Ethereum ausgeführt werden. Hierfür muss der Haken für Enable Optimization beim Compilieren gesetzt werden. Der zu deployende Smart Contract ist entweder VirtualBattery oder Energy. Alle weiteren Abhängigkeiten sind aus der beigefügten Arbeit ersichtlich und würden den Rahmen dieser README sprengen.
